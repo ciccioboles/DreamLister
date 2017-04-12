@@ -1,4 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1217" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toThing" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thing" inverseName="toCategory" inverseEntity="Thing" syncable="YES"/>
+    </entity>
+    <entity name="Photo" representedClassName="Photo" syncable="YES" codeGenerationType="class">
+        <attribute name="photo" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="toShop" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Shop" inverseName="toPhoto" inverseEntity="Shop" syncable="YES"/>
+        <relationship name="toThing" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thing" inverseName="toPhoto" inverseEntity="Thing" syncable="YES"/>
+    </entity>
+    <entity name="Shop" representedClassName="Shop" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toPhoto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="toShop" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="toThing" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thing" inverseName="toStore" inverseEntity="Thing" syncable="YES"/>
+    </entity>
+    <entity name="Thing" representedClassName="Thing" syncable="YES" codeGenerationType="class">
+        <attribute name="cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="toThing" inverseEntity="Category" syncable="YES"/>
+        <relationship name="toPhoto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="toThing" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="toStore" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Shop" inverseName="toThing" inverseEntity="Shop" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Thing" positionX="304" positionY="-141" width="128" height="148"/>
+        <element name="Photo" positionX="-81" positionY="-72" width="128" height="90"/>
+        <element name="Shop" positionX="-36" positionY="81" width="128" height="90"/>
+        <element name="Category" positionX="-72" positionY="-216" width="155" height="73"/>
+    </elements>
 </model>
