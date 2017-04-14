@@ -38,20 +38,20 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
         
         
-//        let store = Shop(context: context)
-//        store.name = "Best Buy"
-//        let store2 = Shop(context: context)
-//        store2.name = "Tesla Dealership"
-//        let store3 = Shop(context: context)
-//        store3.name = "K Mart"
-//        let store4 = Shop(context: context)
-//        store4.name = "Trader Joe's"
-//        let store5 = Shop(context: context)
-//        store5.name = "Amazon"
-//        let store6 = Shop(context: context)
-//        store6.name = "E-Bay"
-//        
-//        ad.saveContext()
+        let store = Shop(context: context)
+        store.name = "Best Buy"
+        let store2 = Shop(context: context)
+        store2.name = "Tesla Dealership"
+        let store3 = Shop(context: context)
+        store3.name = "K Mart"
+        let store4 = Shop(context: context)
+        store4.name = "Trader Joe's"
+        let store5 = Shop(context: context)
+        store5.name = "Amazon"
+        let store6 = Shop(context: context)
+        store6.name = "E-Bay"
+        
+        ad.saveContext()
             getStores()
         
     
@@ -88,6 +88,35 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     
+    @IBAction func savePressed(_ sender: UIButton) {
+        
+        let item = Thing(context: context)
+        
+        if let title = titleField.text {
+            
+            item.name = title
+            
+        }
+        
+        if let price = priceField.text {
+            
+            item.cost = (price as NSString).doubleValue
+            
+            
+        }
+        
+        if let details = detailsField.text {
+            
+            item.details = details
+            
+        }
+        
+        item.toStore = stores[storePicker.selectedRow(inComponent: 0)]
+        ad.saveContext()
+        
+        
+        
+    }
     
     
     
